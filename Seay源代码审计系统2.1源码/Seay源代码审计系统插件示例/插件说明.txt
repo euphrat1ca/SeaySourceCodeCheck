@@ -1,0 +1,26 @@
+插件开发说明：
+
+添加引用项目CSPluginKernel，插件类继承IPlugin类。
+
+继承IPlugin
+
+实现IfuncObject 以及 IvarObject 接口。
+
+实现如下方法 
+
+bool Connect(IfuncObject app,IvarObject var);//连接主程序的方法，app为主程序实例
+  void OnDestory();
+  void OnLoad();
+  void Run();
+
+启动事件在run()方法中，添加到主程序tab中用
+
+F_test ft = new F_test(i_func, i_attribute);
+ft.FormBorderStyle = FormBorderStyle.None;//取消边框
+ft.TopLevel = false;
+ft.Dock = DockStyle.Fill;//控件边缘控制
+i_func.func_I_addtab(ft, "测试插件添加tab");
+
+  
+插件编译测试通过后，放到审计系统主程序的plugins 目录下即可。
+  
